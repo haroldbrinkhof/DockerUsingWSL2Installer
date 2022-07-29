@@ -1,0 +1,10 @@
+
+The installation of docker has now finished, you should be able to use it in your shells now with the following commands.
+
+docker
+docker-compose
+start-dockerd
+stop-dockerd
+
+Mind you, already running shells probably need a restart.
+

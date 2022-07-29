@@ -1,0 +1,14 @@
+
+$DOCKER_DISTRO = "Ubuntu-20.04"
+function docker {
+    wsl -d $DOCKER_DISTRO docker -H unix:///mnt/wsl/shared-docker/docker.sock @Args
+}
+function docker-compose {
+    wsl -d $DOCKER_DISTRO docker-compose -H unix:///mnt/wsl/shared-docker/docker.sock @Args
+}
+function start-dockerd {
+    wsl -d $DOCKER_DISTRO /home/docker/startDockerd.sh
+}
+function stop-dockerd {
+    wsl -d $DOCKER_DISTRO killall dockerd
+}

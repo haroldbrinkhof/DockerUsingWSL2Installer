@@ -1,0 +1,21 @@
+We will now start to install the Ubuntu-20.04 WSL distribution
+
+You will see a new screen popup, this screen will ask you for
+- username: put in "docker<enter>"
+- password: put in "docker<enter>"
+- confirmation of password: put in "docker<enter>"
+
+next the vm will start a shell and show you some statistics, once you can, just
+put in "exit<enter>" to quit this WSL shell and return to this window 
+to continue the configuration of the distribution that just got installed.
+
+so (all follwed by <enter> key):
+
+docker
+docker
+docker
+exit
+
+
+see you soon. Tap <enter> now to start the installation.
+

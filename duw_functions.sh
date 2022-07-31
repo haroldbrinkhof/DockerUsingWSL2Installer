@@ -32,13 +32,24 @@ function setDockerProxySettings(){
 	asDocker "jo -p proxies=\$(jo default=\$(jo httpProxy='${HTTP_PROXY_SCHEME}://${HTTP_USER}:${HTTP_PASSWORD}@${HTTP_URL}' httpsProxy='${HTTPS_PROXY_SCHEME}://{$HTTPS_USER}:${HTTPS_PASSWORD}@${HTTPS_URL}')) > /home/docker/.docker/config.json";
 }
 
+function addDockerUserAndConfigure(){
+
+	asRoot "groupadd -f docker"
+	asRoot "(id -u docker >/dev/null 2>&1) || (echo "adding user docker" && useradd -s /usr/bin/bash -g docker -m docker && usermod --password \$(echo docker | openssl passwd -1 -stdin) docker ) "	
+
+	asRoot "test -d /home/docker || mkdir /home/docker && cp -rT /etc/skel /home/docker && chown -R docker:docker /home/docker"
+	asRoot "usermod -aG docker docker";
+	asRoot "usermod -aG sudo docker";
+}
+
 function installDockerPackagesAndConfigure(){
 
 	asRoot "apt --yes update";
 	asRoot "apt --yes upgrade";
+	asRoot "apt --yes remove docker.io docker-compose";
+	asRoot "apt --yes auto-remove";
 	asRoot "apt --yes install docker.io docker-compose jo";
 
-	asRoot "usermod -aG docker docker";
 	terminateDistro;
 
 	asRoot "groupmod -g 36257 docker";

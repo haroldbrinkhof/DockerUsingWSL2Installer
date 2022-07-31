@@ -1,4 +1,4 @@
-USE_PROXY_APT="yes"; # yes or no, yes if you have to use a proxy
+USE_PROXY_APT="no"; # yes or no, yes if you have to use a proxy
 USE_PROXY_DOCKER="no"; # yes or no, yes if you have to use a proxy
 
 HTTP_USER="";

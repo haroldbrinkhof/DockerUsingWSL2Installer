@@ -7,3 +7,5 @@ just a simple script that installs Ubuntu-20.04 under windows wsl2, installs doc
 
 executed via ./installDockerUsingWSL2.sh
 if you need it to use a proxy, edit proxySettings.sh
+
+On the vm creates a user docker, password docker and gives said user sudo rights(qnd passworldless sudo for killall dockerd, dockerd and chgrp)

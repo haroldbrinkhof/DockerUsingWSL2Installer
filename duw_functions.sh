@@ -20,7 +20,7 @@ function setAptProxySettings(){
 	PROXIES="Acquire::http::Proxy \\\"${HTTP_PROXY_SCHEME}://${HTTP_USER}:${HTTP_PASSWORD}@${HTTP_URL}\\\";"; 
 	PROXIES+=$'\n';
 	PROXIES+="Acquire::https::Proxy \\\"${HTTPS_PROXY_SCHEME}://${HTTPS_USER}:${HTTPS_PASSWORD}@${HTTPS_URL}\\\";"; 
-	echo "$PROXIES";
+
 	asRoot "echo \"$PROXIES\" > /etc/apt/apt.conf.d/proxy.conf";
 
 }
@@ -64,8 +64,8 @@ function installDockerPackagesAndConfigure(){
 	asRoot "jo -p hosts=\$(jo  -a \"unix:///mnt/wsl/shared-docker/docker.sock\") iptables=false > /etc/docker/daemon.json";
 
 	asRoot "echo 'docker ALL=(ALL:ALL) NOPASSWD: /usr/bin/dockerd, /usr/bin/chgrp, /usr/bin/killall dockerd' | sudo EDITOR='tee -a' visudo"
-	asDocker "echo \"$RUN_SCRIPT\" > ~/startDocker.sh";
-	asDocker "chmod u+x ~/startDocker.sh";
+	asDocker "echo \"$RUN_SCRIPT\" > ~/startDockerd.sh";
+	asDocker "chmod u+x ~/startDockerd.sh";
 
 }
 

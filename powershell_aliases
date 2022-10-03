@@ -10,5 +10,5 @@ function start-dockerd {
     wsl -d $DOCKER_DISTRO /home/docker/startDockerd.sh
 }
 function stop-dockerd {
-    wsl -d $DOCKER_DISTRO killall dockerd
+    wsl -d $DOCKER_DISTRO sudo killall dockerd
 }
